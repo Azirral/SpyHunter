@@ -34,28 +34,29 @@ void Game::initialize(const char* title, int x, int y, int width, int height)
 void Game::handleEvents()
 {
 	SDL_Event event;
-	SDL_PollEvent(&event);
-	switch (event.type) {
-	case SDL_QUIT:
-		isRunning = false;
-		break;
-	case SDL_KEYUP:
-		//
-		break;
-	case SDL_KEYDOWN:
-		//
-		break;
-	case SDLK_LEFT:
-		//do sprawdzenia czy dzia³a czy trzeba magic pozmieniaæ
-		break; 
-	case SDLK_RIGHT:
-			//do sprawdzenia czy dzia³a czy trzeba magic pozmieniaæ
+	while (SDL_PollEvent(&event)) {
+		switch (event.type) {
+		case SDL_QUIT:
+			isRunning = false;
 			break;
-	case SDLK_ESCAPE:
-		//do sprawdzenia czy dzia³a czy trzeba magic pozmieniaæ
-		break;
-	default:
-		break;
+		case SDL_KEYUP:
+			if (event.key.keysym.sym == SDLK_UP)
+				;//
+			else if (event.key.keysym.sym == SDLK_DOWN)
+				;//
+			else if (event.key.keysym.sym == SDLK_LEFT)
+				;//
+			else if (event.key.keysym.sym == SDLK_RIGHT)
+				;//
+			else if (event.key.keysym.sym == SDLK_ESCAPE)
+				isRunning = false;
+			break;
+		case SDL_KEYDOWN:
+			//
+			break;
+		default:
+			break;
+		}
 	}
 }
 
